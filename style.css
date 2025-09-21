@@ -619,7 +619,23 @@ footer {
     padding: 20px 0;
 }
 
-/* Comprehensive Responsive Design */
+/* Enhanced Responsive Design for Better Mobile Experience */
+
+/* Container Base Styles - Ensure no overflow */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
 /* Large Tablets and Small Laptops (992px - 1199px) */
 @media (max-width: 1199px) {
@@ -634,6 +650,16 @@ footer {
     
     .about-content {
         gap: 40px;
+    }
+    
+    /* Form improvements */
+    .form-container {
+        max-width: 100%;
+        padding: 40px 30px;
+    }
+    
+    .pictionary-card {
+        padding: 30px 25px;
     }
 }
 
@@ -682,8 +708,51 @@ footer {
         gap: 20px;
     }
     
+    /* Enhanced Form Styles for Tablets */
+    .form-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 35px 25px;
+        margin: 0;
+    }
+    
     .pictionary-card {
-        padding: 30px;
+        padding: 30px 20px;
+        margin: 15px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .pictionary-image img {
+        max-width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+    }
+    
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+    
+    .skeu-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        margin: 8px 5px;
+        min-width: 100px;
+    }
+    
+    /* Contact Section for Tablets */
+    .contact-grid {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .contact-card {
+        width: 100%;
+        max-width: 500px;
+        padding: 35px 25px;
     }
 }
 
@@ -707,6 +776,7 @@ footer {
         gap: 15px;
         margin: 0;
         padding: 0;
+        width: 100%;
     }
     
     nav ul li {
@@ -719,6 +789,7 @@ footer {
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.1);
         transition: all 0.3s ease;
+        white-space: nowrap;
     }
     
     nav ul li a:hover {
@@ -746,6 +817,7 @@ footer {
     .hero-content {
         padding: 30px 20px;
         margin: 0 15px;
+        max-width: calc(100% - 30px);
     }
     
     /* About Section Mobile */
@@ -778,18 +850,30 @@ footer {
         max-width: 200px;
     }
     
-    /* Quiz Section Mobile */
+    /* Enhanced Quiz Section Mobile */
     .quiz {
         padding: 60px 0;
     }
     
     .form-container {
-        padding: 30px 20px;
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 15px;
+        margin: 0;
+        box-sizing: border-box;
     }
     
     .pictionary-card {
-        padding: 25px 15px;
+        padding: 20px 15px;
         margin: 15px 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .pictionary-image {
+        width: 100%;
+        text-align: center;
     }
     
     .pictionary-image img {
@@ -797,35 +881,70 @@ footer {
         height: auto;
         max-height: 200px;
         object-fit: contain;
+        width: auto;
     }
     
     .quiz-form-group {
         margin: 20px 0;
+        width: 100%;
     }
     
     .glass-input {
+        width: 100%;
         padding: 12px 15px;
         font-size: 1rem;
+        box-sizing: border-box;
     }
     
     .skeu-button {
         padding: 12px 20px;
         font-size: 0.9rem;
-        margin: 5px;
+        margin: 5px 3px;
+        min-width: 80px;
+        white-space: nowrap;
     }
     
     .question-counter {
         font-size: 0.9rem;
         margin-bottom: 20px;
+        text-align: center;
     }
     
-    /* Contact Section Mobile */
+    /* Enhanced Form Groups for Mobile */
+    .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    
+    .form-group label {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    /* Enhanced Contact Section Mobile */
     .contact {
         padding: 60px 0;
     }
     
+    .contact-grid {
+        max-width: 100%;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
     .contact-card {
         padding: 30px 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .contact-card i {
@@ -833,12 +952,23 @@ footer {
         width: 70px;
         height: 70px;
     }
+    
+    .contact-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    
+    .contact-card p {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
 }
 
 /* Small Mobile Devices (up to 575px) */
 @media (max-width: 575px) {
     .container {
         padding: 0 15px;
+        max-width: 100%;
     }
     
     nav {
@@ -875,6 +1005,7 @@ footer {
     .hero-content {
         padding: 25px 15px;
         margin: 0 10px;
+        max-width: calc(100% - 20px);
     }
     
     .btn {
@@ -908,6 +1039,7 @@ footer {
     
     .stat {
         padding: 15px;
+        max-width: 180px;
     }
     
     .stat-number {
@@ -918,44 +1050,54 @@ footer {
         font-size: 0.8rem !important;
     }
     
-    /* Quiz Section Extra Small */
+    /* Enhanced Quiz Section Extra Small */
     .quiz {
         padding: 40px 0;
     }
     
     .form-container {
-        padding: 20px 15px;
+        padding: 20px 12px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .pictionary-card {
-        padding: 20px 12px;
+        padding: 18px 10px;
         margin: 12px 0;
+        width: 100%;
+        max-width: 100%;
     }
     
     .pictionary-image img {
         max-height: 150px;
+        width: auto;
+        max-width: 100%;
     }
     
     .pictionary-image p {
         font-size: 0.85rem;
         margin-top: 10px;
+        padding: 0 5px;
     }
     
     .glass-input {
         padding: 10px 12px;
         font-size: 0.9rem;
+        width: 100%;
     }
     
     .skeu-button {
         padding: 10px 15px;
         font-size: 0.8rem;
-        margin: 3px;
-        min-width: 80px;
+        margin: 3px 2px;
+        min-width: 70px;
     }
     
     .quiz-section h2 {
         font-size: 1.4rem;
         margin-bottom: 20px;
+        padding: 0 10px;
+        text-align: center;
     }
     
     .question-counter {
@@ -963,13 +1105,34 @@ footer {
         margin-bottom: 15px;
     }
     
-    /* Contact Section Extra Small */
+    /* Form Groups Extra Small */
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    /* Enhanced Contact Section Extra Small */
     .contact {
         padding: 40px 0;
     }
     
+    .contact-grid {
+        padding: 0 12px;
+    }
+    
     .contact-card {
         padding: 25px 15px;
+        margin: 0 auto;
+        max-width: 100%;
     }
     
     .contact-card h3 {
@@ -1001,12 +1164,22 @@ footer {
         font-size: 0.9rem;
     }
     
+    .hero-content {
+        padding: 20px 12px;
+        margin: 0 8px;
+    }
+    
     .section-title {
         font-size: 1.4rem;
     }
     
     .about-text h3 {
         font-size: 1.3rem;
+    }
+    
+    /* Ultra-small Quiz adjustments */
+    .form-container {
+        padding: 15px 8px;
     }
     
     .pictionary-card {
@@ -1020,11 +1193,37 @@ footer {
     .skeu-button {
         padding: 8px 12px;
         font-size: 0.75rem;
-        min-width: 70px;
+        min-width: 65px;
+        margin: 2px 1px;
     }
     
     .glass-input {
         padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    /* Ultra-small Contact adjustments */
+    .contact-card {
+        padding: 20px 12px;
+    }
+    
+    .contact-card i {
+        font-size: 1.8rem;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .contact-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-card p {
         font-size: 0.85rem;
     }
 }
@@ -1051,6 +1250,29 @@ footer {
     
     .contact {
         padding: 50px 0;
+    }
+    
+    .pictionary-image img {
+        max-height: 180px;
+    }
+}
+
+/* Ensure all buttons are touch-friendly */
+@media (max-width: 767px) {
+    .skeu-button {
+        min-height: 44px;
+        display: inline-block;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    .glass-input {
+        min-height: 44px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        min-height: 44px;
     }
 }
 a {
@@ -1425,5 +1647,407 @@ nav ul li a:hover:after {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Additional Mobile Layout Fixes */
+
+/* Quiz Button Navigation Fixes */
+.pictionary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.quiz-form-group {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.pictionary-card .skeu-button {
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ensure all form inputs are contained properly */
+.form-group,
+.quiz-form-group {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input,
+.form-group select,
+.glass-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Contact section grid fix */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.contact-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Image responsive fixes */
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.pictionary-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pictionary-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Mobile-specific button improvements */
+@media (max-width: 767px) {
+    .prev-btn, .next-btn, .submit-btn {
+        display: block;
+        width: auto;
+        min-width: 120px;
+        max-width: 200px;
+        margin: 8px auto;
+        text-align: center;
+    }
+    
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .button-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .prev-btn, .next-btn, .submit-btn {
+        min-width: 100px;
+        max-width: 150px;
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .prev-btn, .next-btn, .submit-btn {
+        min-width: 80px;
+        max-width: 120px;
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Android Device Specific Optimizations */
+
+/* Android Chrome viewport fix */
+@supports (-webkit-appearance: none) and (not (-ms-ime-align: auto)) {
+    body {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+}
+
+/* Android font rendering improvements */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Android touch improvements */
+button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input, textarea {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Android keyboard viewport handling */
+@media screen and (max-device-width: 767px) {
+    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+        font-size: 16px !important;
+        transform: translateZ(0);
+    }
+}
+
+/* Common Android Device Breakpoints */
+
+/* Samsung Galaxy S Series (360px - 412px) */
+@media screen and (max-width: 412px) and (orientation: portrait) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    .hero-content {
+        padding: 20px 15px;
+        margin: 0 8px;
+    }
+    
+    .hero h1 {
+        font-size: 1.7rem;
+        line-height: 1.2;
+    }
+    
+    .pictionary-card {
+        padding: 15px 10px;
+    }
+    
+    .pictionary-image img {
+        max-height: 140px;
+    }
+    
+    .skeu-button {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        min-width: 70px;
+    }
+    
+    .form-group input,
+    .glass-input {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+}
+
+/* Samsung Galaxy A Series & Pixel phones (360px) */
+@media screen and (max-width: 360px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .pictionary-image img {
+        max-height: 120px;
+    }
+    
+    .contact-card {
+        padding: 20px 10px;
+    }
+}
+
+/* Android Tablets (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .pictionary-card {
+        padding: 40px 30px;
+    }
+    
+    .pictionary-image img {
+        max-height: 300px;
+    }
+    
+    .skeu-button {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Android Tablets Landscape */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .hero {
+        height: 60vh;
+    }
+    
+    .about-content {
+        gap: 40px;
+    }
+    
+    .pictionary-image img {
+        max-height: 250px;
+    }
+}
+
+/* Large Android phones landscape (like Samsung Galaxy Note) */
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: auto;
+        min-height: 80vh;
+        padding: 20px 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .about {
+        padding: 30px 0;
+    }
+    
+    .quiz {
+        padding: 30px 0;
+    }
+    
+    .pictionary-image img {
+        max-height: 150px;
+    }
+    
+    .contact {
+        padding: 30px 0;
+    }
+}
+
+/* Android Chrome address bar compensation */
+@media screen and (max-width: 767px) {
+    .hero {
+        min-height: calc(100vh - 56px);
+    }
+}
+
+/* Android specific input styling fixes */
+@media screen and (max-width: 767px) {
+    input[type="text"], 
+    input[type="email"], 
+    input[type="tel"], 
+    input[type="password"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 15px;
+        background-clip: padding-box;
+    }
+    
+    /* Fix for Android keyboard overlay */
+    .form-container {
+        margin-bottom: 50px;
+    }
+    
+    /* Android scrolling improvements */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Android accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Android high DPI displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+       screen and (min-resolution: 192dpi) {
+    .hero-content,
+    .pictionary-card,
+    .contact-card {
+        border-width: 0.5px;
+    }
+}
+
+/* Android gesture navigation compensation */
+@media screen and (max-width: 767px) {
+    footer {
+        padding-bottom: 20px;
+    }
+    
+    .quiz {
+        padding-bottom: 80px;
+    }
+}
+
+/* Android WebView specific fixes */
+@media screen and (max-width: 767px) {
+    body {
+        -webkit-overflow-scrolling: touch;
+        transform: translateZ(0);
+    }
+    
+    .hero-content,
+    .pictionary-card,
+    .about-content {
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
     }
 }
