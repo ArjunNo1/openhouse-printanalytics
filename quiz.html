@@ -247,7 +247,7 @@
 
                     <!-- Question 1 -->
                     <div class="question" id="question1">
-                        <div class="question-counter">Question 1 of 3</div>
+                        <div class="question-counter">Question 1 of 7</div>
                         <div class="pictionary-card">
                             <div class="pictionary-image">
                                 <img src="Images/Paper Jam.png" alt="Paper Jam Illustration">
@@ -270,7 +270,7 @@
 
                     <!-- Question 2 -->
                     <div class="question" id="question2" style="display:none;">
-                        <div class="question-counter">Question 2 of 3</div>
+                        <div class="question-counter">Question 2 of 7</div>
                         <div class="pictionary-card">
                             <div class="pictionary-image">
                                 <img src="Images/Print Head.png" alt="Print Head Illustration">
@@ -296,7 +296,7 @@
 
                     <!-- Question 3 -->
                     <div class="question" id="question3" style="display:none;">
-                        <div class="question-counter">Question 3 of 3</div>
+                        <div class="question-counter">Question 3 of 7</div>
                         <div class="pictionary-card">
                             <div class="pictionary-image">
                                 <img src="Images/Printer Setup.png" alt="Printer Setup Illustration">
@@ -312,6 +312,106 @@
                                     placeholder="Enter your answer..." required>
                             </div>
                             <button type="button" class="skeu-button prev-btn" onclick="showQuestion(2)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(4)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question" id="question4" style="display:none;">
+                        <div class="question-counter">Question 4 of 7</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Instant Ink.png" alt="Instant Ink Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    💧 + 📦 = ? <br>
+                                    <small>Hint: HP's subscription service that automatically delivers ink to your door</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer4" style="font-weight: 600; color: #647FBC;">What is this HP service called?</label>
+                                <input type="text" id="answer4" name="answer4" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(3)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(5)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question" id="question5" style="display:none;">
+                        <div class="question-counter">Question 5 of 7</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Data Product.png" alt="Data Product Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    📊 + 📦 = ? <br>
+                                    <small>Hint: Information systems that provide insights and analytics from collected data</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer5" style="font-weight: 600; color: #647FBC;">What type of offering is this?</label>
+                                <input type="text" id="answer5" name="answer5" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(4)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(6)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question" id="question6" style="display:none;">
+                        <div class="question-counter">Question 6 of 7</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Root Cause Analysis.png" alt="Root Cause Analysis Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    🔍 + 🌳 = ? <br>
+                                    <small>Hint: A problem-solving method used to identify the underlying cause of issues</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer6" style="font-weight: 600; color: #647FBC;">What analysis method is this?</label>
+                                <input type="text" id="answer6" name="answer6" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(5)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(7)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question" id="question7" style="display:none;">
+                        <div class="question-counter">Question 7 of 7</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Telemetry.png" alt="Telemetry Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    📡 + 📊 = ? <br>
+                                    <small>Hint: Automated collection and transmission of data from remote devices</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer7" style="font-weight: 600; color: #647FBC;">What data collection method is this?</label>
+                                <input type="text" id="answer7" name="answer7" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(6)">
                                 <i class="fas fa-arrow-left"></i> Previous
                             </button>
                             <button type="submit" class="skeu-button submit-btn"

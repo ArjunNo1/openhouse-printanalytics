@@ -69,7 +69,7 @@ app.post('/submit-quiz', async (req, res) => {
         });
         
         console.log("Quiz submitted:", quizData.name, quizData.email, 
-                   `Score: ${quizData.score}/3`, 
+                   `Score: ${quizData.score}/7`, 
                    `Time: ${quizData.timing.totalTimeSeconds}s`,
                    quizData.isAllCorrect ? "✅ PERFECT" : "❌");
     } catch (error) {
@@ -87,7 +87,7 @@ app.get('/leaderboard', async (req, res) => {
         // Get top 10 perfect scores ordered by completion time
         const leaderboard = await collection.find({
             isEligibleForRanking: true,
-            score: 3
+            score: 7
         })
         .sort({ 'timing.totalTimeSeconds': 1 }) // Fastest first
         .limit(10)
@@ -116,7 +116,7 @@ async function updateRanking(quizData) {
         // Count how many people have faster times with perfect scores
         const fasterCount = await collection.countDocuments({
             isEligibleForRanking: true,
-            score: 3,
+            score: 7,
             'timing.totalTimeSeconds': { $lt: quizData.timing.totalTimeSeconds }
         });
         
@@ -125,7 +125,7 @@ async function updateRanking(quizData) {
         // Get total number of perfect scores
         const totalPerfectScores = await collection.countDocuments({
             isEligibleForRanking: true,
-            score: 3
+            score: 7
         });
         
         return {
@@ -149,7 +149,7 @@ app.get('/stats', async (req, res) => {
                     totalSubmissions: { $sum: 1 },
                     perfectScores: { 
                         $sum: { 
-                            $cond: [{ $eq: ["$score", 3] }, 1, 0] 
+                            $cond: [{ $eq: ["$score", 7] }, 1, 0] 
                         } 
                     },
                     averageScore: { $avg: "$score" },
@@ -159,7 +159,7 @@ app.get('/stats', async (req, res) => {
                     fastestTime: { 
                         $min: { 
                             $cond: [
-                                { $eq: ["$score", 3] }, 
+                                { $eq: ["$score", 7] }, 
                                 "$timing.totalTimeSeconds", 
                                 null
                             ] 

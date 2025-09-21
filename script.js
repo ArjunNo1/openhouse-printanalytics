@@ -4,7 +4,11 @@
 const CORRECT_ANSWERS = {
     question1: ['paper jam', 'paperjam', 'jam', 'paper stuck'],
     question2: ['print head', 'printhead', 'head', 'printer head'],
-    question3: ['printer setup', 'setup', 'installation', 'printer installation', 'configure', 'configuration']
+    question3: ['printer setup', 'setup', 'installation', 'printer installation', 'configure', 'configuration'],
+    question4: ['instant ink', 'instantink', 'instant', 'ink subscription', 'subscription service'],
+    question5: ['data product', 'dataproduct', 'data analytics', 'analytics product', 'data solution'],
+    question6: ['root cause analysis', 'rootcauseanalysis', 'rca', 'root cause', 'cause analysis'],
+    question7: ['telemetry', 'remote monitoring', 'data transmission', 'remote data', 'monitoring']
 };
 
 // Timing variables
@@ -13,6 +17,7 @@ let questionStartTimes = {};
 let totalTimeSpent = 0;
 let timerInterval = null;
 let quizStarted = false;
+let quizSubmitted = false;
 
 // Initialize quiz timing when user starts interacting with form
 function initializeQuizTiming() {
@@ -45,7 +50,7 @@ function showQuestion(questionNumber) {
     }
     
     // Hide all questions
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 7; i++) {
         document.getElementById('question' + i).style.display = 'none';
     }
     
@@ -58,7 +63,7 @@ function showQuestion(questionNumber) {
 
 // Get currently visible question number
 function getCurrentVisibleQuestion() {
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 7; i++) {
         const question = document.getElementById('question' + i);
         if (question && question.style.display !== 'none') {
             return i;
@@ -69,7 +74,7 @@ function getCurrentVisibleQuestion() {
 
 // Update timing display
 function updateTimingDisplay() {
-    if (!quizStartTime) return;
+    if (!quizStartTime || quizSubmitted) return;
     
     const currentTime = new Date();
     const elapsedSeconds = Math.floor((currentTime - quizStartTime) / 1000);
@@ -104,7 +109,7 @@ function updateTimingDisplay() {
 function validateAnswers(userAnswers) {
     const results = {
         correct: 0,
-        total: 3,
+        total: 7,
         details: {}
     };
     
@@ -152,17 +157,28 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Set submission flag to prevent timer updates
+            quizSubmitted = true;
+            
             // Stop timer immediately when submit is clicked
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
             }
             
-            // Remove timer display immediately
+            // Remove timer display immediately and ensure it's completely hidden
             const timerDiv = document.getElementById('quiz-timer');
             if (timerDiv) {
+                timerDiv.style.display = 'none';
                 timerDiv.remove();
             }
+            
+            // Also try to remove any lingering timer elements
+            const allTimers = document.querySelectorAll('[id*="timer"], .timer, .quiz-timer');
+            allTimers.forEach(timer => {
+                timer.style.display = 'none';
+                timer.remove();
+            });
             
             // Calculate total completion time
             const completionTime = new Date();
@@ -173,7 +189,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const userAnswers = {
                 question1: document.getElementById('answer1').value,
                 question2: document.getElementById('answer2').value,
-                question3: document.getElementById('answer3').value
+                question3: document.getElementById('answer3').value,
+                question4: document.getElementById('answer4').value,
+                question5: document.getElementById('answer5').value,
+                question6: document.getElementById('answer6').value,
+                question7: document.getElementById('answer7').value
             };
             
             // Validate answers
@@ -194,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 timestamp: completionTime,
                 score: validation.correct,
-                isAllCorrect: validation.correct === 3,
-                isEligibleForRanking: validation.correct === 3 // Only perfect scores are ranked
+                isAllCorrect: validation.correct === 7,
+                isEligibleForRanking: validation.correct === 7 // Only perfect scores are ranked
             };
             
             // Submit to MongoDB
@@ -337,7 +357,7 @@ function displayResults(submissionData, serverResponse) {
         resultHTML += `
             <div style="background: rgba(145, 173, 200, 0.3); padding: 20px; border-radius: 15px; text-align: center; color: #333;">
                 <div style="font-size: 1.2rem; margin-bottom: 10px;">📚 Keep Learning!</div>
-                <div>To appear on the leaderboard, you need all 3 answers correct. Try again to improve your score!</div>
+                <div>To appear on the leaderboard, you need all 7 answers correct. Try again to improve your score!</div>
                 <div style="margin-top: 10px; font-size: 0.9rem;">Check the leaderboard below to see current top performers.</div>
             </div>
         `;
@@ -377,7 +397,7 @@ function displayLeaderboard(leaderboard) {
                 <i class="fas fa-trophy"></i> Top Performers Leaderboard
             </h3>
             <p style="text-align: center; color: #666; margin-bottom: 20px;">
-                Fastest completion times with perfect scores (all 3 answers correct)
+                Fastest completion times with perfect scores (all 7 answers correct)
             </p>
     `;
     
