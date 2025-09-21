@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP Print Analytics - Week 1 Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Glassmorphism and Skeuomorphism Styles */
+        .quiz-container {
+            background: rgba(174, 214, 207, 0.25);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px 0 rgba(100, 127, 188, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .week-badge {
+            background: linear-gradient(145deg, #647FBC, #91ADC8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow:
+                8px 8px 20px rgba(100, 127, 188, 0.3),
+                -8px -8px 20px rgba(255, 255, 255, 0.1),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-title {
+            background: linear-gradient(135deg, #647FBC, #AED6CF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(100, 127, 188, 0.2);
+        }
+
+        .pictionary-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow:
+                0 12px 24px rgba(100, 127, 188, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .pictionary-image {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow:
+                inset 4px 4px 8px rgba(100, 127, 188, 0.1),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8),
+                0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(174, 214, 207, 0.3);
+        }
+
+        .pictionary-image img {
+            max-width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            filter: drop-shadow(0 4px 8px rgba(100, 127, 188, 0.2));
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px 20px;
+            color: #333;
+            font-size: 16px;
+            box-shadow:
+                inset 2px 2px 5px rgba(100, 127, 188, 0.1),
+                0 2px 10px rgba(100, 127, 188, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-input.name-input {
+            width: 60%;
+            max-width: 300px;
+        }
+
+        .glass-input.email-input {
+            width: 70%;
+            max-width: 350px;
+        }
+
+        .glass-input.section-input {
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .glass-input.answer-input {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .glass-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(100, 127, 188, 0.5);
+            box-shadow:
+                inset 2px 2px 5px rgba(100, 127, 188, 0.2),
+                0 0 20px rgba(100, 127, 188, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            text-align: left;
+        }
+
+        .quiz-form-group {
+            text-align: center;
+        }
+
+        .quiz-form-group label {
+            text-align: center;
+        }
+
+        .skeu-button {
+            background: linear-gradient(145deg, #647FBC, #91ADC8);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 15px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow:
+                6px 6px 12px rgba(100, 127, 188, 0.4),
+                -6px -6px 12px rgba(255, 255, 255, 0.1),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .skeu-button:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                8px 8px 16px rgba(100, 127, 188, 0.5),
+                -8px -8px 16px rgba(255, 255, 255, 0.15),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+                inset -1px -1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .skeu-button:active {
+            transform: translateY(0);
+            box-shadow:
+                inset 3px 3px 6px rgba(100, 127, 188, 0.3),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .question-counter {
+            background: rgba(174, 214, 207, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #647FBC;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question:first-of-type {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <div class="week-badge">
+                <i class="fas fa-calendar-week"></i> Week 1 Quiz
+            </div>
+
+            <h1 class="quiz-title">Print Pictionary Challenge</h1>
+
+            <!-- User Info Form -->
+            <form id="quiz-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" class="glass-input name-input"
+                        placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" class="glass-input email-input"
+                        placeholder="your.email@hp.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="section">Section you work in:</label>
+                    <select id="section" name="section" class="glass-input section-input" required>
+                        <option value="">Select your section</option>
+                        <option value="UCDE">UCDE (User-Centered Design & Experience)</option>
+                        <option value="Instant Ink">Instant Ink Team</option>
+                        <option value="Supply">Supply Team</option>
+                        <option value="Print Analytics">Print Analytics</option>
+                        <option value="Management">Management</option>
+                    </select>
+                </div>
+
+                <!-- Image Quiz Section -->
+                <div class="quiz-section">
+                    <h2 style="text-align: center; color: #647FBC; margin-bottom: 30px; font-size: 1.8rem;">
+                        <i class="fas fa-puzzle-piece"></i> Guess the Printer Term!
+                    </h2>
+
+                    <!-- Question 1 -->
+                    <div class="question" id="question1">
+                        <div class="question-counter">Question 1 of 3</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Paper Jam.png" alt="Paper Jam Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    🧾 + 🚧 = ? <br>
+                                    <small>Hint: When paper gets stuck and blocks the printing process</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer1" style="font-weight: 600; color: #647FBC;">What printer term does
+                                    this represent?</label>
+                                <input type="text" id="answer1" name="answer1" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(2)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question" id="question2" style="display:none;">
+                        <div class="question-counter">Question 2 of 3</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Print Head.png" alt="Print Head Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    🖨️ + 🗣️ = ? <br>
+                                    <small>Hint: The component that applies ink to paper during printing</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer2" style="font-weight: 600; color: #647FBC;">What printer component is
+                                    this?</label>
+                                <input type="text" id="answer2" name="answer2" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(1)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="skeu-button next-btn" onclick="showQuestion(3)">
+                                <i class="fas fa-arrow-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question" id="question3" style="display:none;">
+                        <div class="question-counter">Question 3 of 3</div>
+                        <div class="pictionary-card">
+                            <div class="pictionary-image">
+                                <img src="Images/Printer Setup.png" alt="Printer Setup Illustration">
+                                <p style="margin-top: 15px; color: #666; font-style: italic;">
+                                    🖨️ + ⚙️ = ? <br>
+                                    <small>Hint: The process of configuring and installing a new printer</small>
+                                </p>
+                            </div>
+                            <div class="quiz-form-group">
+                                <label for="answer3" style="font-weight: 600; color: #647FBC;">What is this printing
+                                    process called?</label>
+                                <input type="text" id="answer3" name="answer3" class="glass-input answer-input"
+                                    placeholder="Enter your answer..." required>
+                            </div>
+                            <button type="button" class="skeu-button prev-btn" onclick="showQuestion(2)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="submit" class="skeu-button submit-btn"
+                                style="background: linear-gradient(145deg, #28a745, #20c997);">
+                                <i class="fas fa-check-circle"></i> Submit Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="result-message" style="margin-top: 30px; text-align: center;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

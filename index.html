@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HP Print Analytics - Image Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1200px-HP_logo_2012.svg.png"
+                    alt="HP Logo" />
+            </div>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1><strong>Innovating Tomorrow's Solutions</strong></h1>
+            <p>
+                <strong>Your trusted partner in print analytics and enterprise
+                    solutions</strong>
+            </p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Image Carousel Section -->
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="section-title">Our Print Analytics Solutions</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80"
+                            alt="Modern Print Analytics Dashboard" />
+                        <div class="slide-content">
+                            <h3>Advanced Analytics Dashboard</h3>
+                            <p>
+                                Real-time insights into your printing environment with
+                                comprehensive data visualization
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                            alt="Enterprise Printing Solutions" />
+                        <div class="slide-content">
+                            <h3>Enterprise Printing Solutions</h3>
+                            <p>
+                                Scalable printing infrastructure designed for modern
+                                businesses
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                            alt="Data-Driven Insights" />
+                        <div class="slide-content">
+                            <h3>Data-Driven Optimization</h3>
+                            <p>
+                                Transform your print data into actionable business
+                                intelligence
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+                            alt="Sustainable Printing" />
+                        <div class="slide-content">
+                            <h3>Sustainable Print Management</h3>
+                            <p>
+                                Reduce environmental impact while maintaining productivity and
+                                efficiency
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1200&q=80"
+                            alt="Cloud Integration" />
+                        <div class="slide-content">
+                            <h3>Cloud-First Architecture</h3>
+                            <p>
+                                Seamless integration with cloud platforms for anywhere access
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev-btn" onclick="prevSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                    <span class="indicator" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Teams</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                        alt="Team meeting" />
+                </div>
+                <div class="about-text">
+                    <h3>Print Analytics Excellence</h3>
+                    <p>
+                        HP Print Analytics comprises three specialized teams working
+                        together to revolutionize printing solutions. Our teams combine
+                        deep industry knowledge with cutting-edge technology to deliver
+                        insights that optimize costs, improve efficiency, and reduce
+                        environmental impact.
+                    </p>
+                    <p>
+                        Our three core teams - UCDE, Instant Ink, and Supply - collaborate
+                        to provide comprehensive print analytics solutions serving over
+                        500 clients worldwide.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Core Teams</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Global Clients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Print Analytics</h3>
+                    <p>
+                        Advanced analytics to track, monitor, and optimize your
+                        organization's printing environment.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability Solutions</h3>
+                    <p>
+                        Reduce environmental impact while maintaining productivity with
+                        our eco-friendly options.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Management</h3>
+                    <p>
+                        Protect sensitive documents and prevent unauthorized access to
+                        printing resources.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Integration</h3>
+                    <p>
+                        Seamless cloud printing solutions that work anywhere your team
+                        does.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Our Teams</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80"
+                            alt="Section Manager" />
+                    </div>
+                    <h3>Abhishek</h3>
+                    <p>Section Manager</p>
+                    <p>Print Analytics Division</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80"
+                            alt="UCDE Team Manager" />
+                    </div>
+                    <h3>Jesvicta</h3>
+                    <p>UCDE Team Manager</p>
+                    <p>User-Centered Design & Experience</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80"
+                            alt="Instant Ink Manager" />
+                    </div>
+                    <h3>Bhavana</h3>
+                    <p>Instant Ink Manager</p>
+                    <p>Subscription & Ink Management Solutions</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+                            alt="Supply Team Manager" />
+                    </div>
+                    <h3>Narendra</h3>
+                    <p>Supply Team Manager</p>
+                    <p>Supply Chain & Logistics Analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="quiz">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-week"></i> Week 1 Quiz - Print Pictionary
+                Challenge
+            </h2>
+            <div class="form-container">
+                <form id="quiz-form">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email ID:</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section">Section you work in:</label>
+                        <select id="section" name="section" required>
+                            <option value="">Select your section</option>
+                            <option value="UCDE">
+                                UCDE (User-Centered Design & Experience)
+                            </option>
+                            <option value="Instant Ink">Instant Ink Team</option>
+                            <option value="Supply">Supply Team</option>
+                            <option value="Print Analytics Management">
+                                Print Analytics Management
+                            </option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Image Quiz Section -->
+                    <div class="quiz-section">
+                        <h2 style="
+                  text-align: center;
+                  color: #647fbc;
+                  margin-bottom: 30px;
+                  font-size: 1.8rem;
+                ">
+                            <i class="fas fa-puzzle-piece"></i> Guess the Printer Term!
+                        </h2>
+
+                        <!-- Question 1 -->
+                        <div class="question" id="question1">
+                            <div class="question-counter">Question 1 of 3</div>
+                            <div class="pictionary-card">
+                                <div class="pictionary-image">
+                                    <img src="Images/Paper Jam.png" alt="Paper Jam Illustration" />
+                                    <p style="margin-top: 15px; color: #666; font-style: italic">
+                                        <!-- 🧾 + 🚧 = ? <br /> -->
+                                        <small>Hint: When paper gets stuck and blocks the printing
+                                            process</small>
+                                    </p>
+                                </div>
+                                <div class="quiz-form-group">
+                                    <label for="answer1" style="font-weight: 600; color: #647fbc"></label>
+                                    <input type="text" id="answer1" name="answer1" class="glass-input answer-input"
+                                        placeholder="Enter your answer..." required />
+                                </div>
+                                <button type="button" class="skeu-button next-btn" onclick="showQuestion(2)">
+                                    <i class="fas fa-arrow-right"></i> Next
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="question" id="question2" style="display: none">
+                            <div class="question-counter">Question 2 of 3</div>
+                            <div class="pictionary-card">
+                                <div class="pictionary-image">
+                                    <img src="Images/Print Head.png" alt="Print Head Illustration" />
+                                    <p style="margin-top: 15px; color: #666; font-style: italic">
+                                        <!-- 🖨️ + 🗣️ = ? <br /> -->
+                                        <small>Hint: The component that applies ink to paper during
+                                            printing</small>
+                                    </p>
+                                </div>
+                                <div class="quiz-form-group">
+                                    <label for="answer2" style="font-weight: 600; color: #647fbc"></label>
+                                    <input type="text" id="answer2" name="answer2" class="glass-input answer-input"
+                                        placeholder="Enter your answer..." required />
+                                </div>
+                                <button type="button" class="skeu-button prev-btn" onclick="showQuestion(1)">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="button" class="skeu-button next-btn" onclick="showQuestion(3)">
+                                    <i class="fas fa-arrow-right"></i> Next
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="question" id="question3" style="display: none">
+                            <div class="question-counter">Question 3 of 3</div>
+                            <div class="pictionary-card">
+                                <div class="pictionary-image">
+                                    <img src="Images/Printer Setup.png" alt="Printer Setup Illustration" />
+                                    <p style="margin-top: 15px; color: #666; font-style: italic">
+                                        <!-- 🖨️ + ⚙️ = ? <br /> -->
+                                        <small>Hint: The process of configuring and installing a new
+                                            printer</small>
+                                    </p>
+                                </div>
+                                <div class="quiz-form-group">
+                                    <label for="answer3" style="font-weight: 600; color: #647fbc"></label>
+                                    <input type="text" id="answer3" name="answer3" class="glass-input answer-input"
+                                        placeholder="Enter your answer..." required />
+                                </div>
+                                <button type="button" class="skeu-button prev-btn" onclick="showQuestion(2)">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="submit" class="skeu-button submit-btn" style="
+                      background: linear-gradient(145deg, #28a745, #20c997);
+                    ">
+                                    <i class="fas fa-check-circle"></i> Submit Quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="result-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Print Analytics Team</h3>
+                    <p>Data Analytics & Insights Division</p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:printanalytics@hp.com">printanalytics@hp.com</a>
+                    </p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 234-5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> HP Campus, Bangalore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 HP Print Analytics Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
