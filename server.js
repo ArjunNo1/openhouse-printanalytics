@@ -93,7 +93,7 @@ app.get('/leaderboard', async (req, res) => {
         .limit(10)
         .project({
             name: 1,
-            section: 1,
+            email: 1,
             timing: 1,
             score: 1,
             submittedAt: 1

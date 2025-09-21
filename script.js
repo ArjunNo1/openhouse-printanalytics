@@ -202,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                section: document.getElementById('section').value,
                 answers: userAnswers,
                 validation: validation,
                 timing: {
@@ -419,7 +418,7 @@ function displayLeaderboard(leaderboard) {
                     <div style="font-size: 1.5rem; margin-right: 15px; min-width: 40px;">${medal}</div>
                     <div style="flex: 1;">
                         <div style="font-weight: 600; color: #333;">${entry.name}</div>
-                        <div style="color: #666; font-size: 0.9rem;">${entry.section}</div>
+                       
                     </div>
                     <div style="text-align: right;">
                         <div style="font-weight: 600; color: #647FBC;">${timeDisplay}</div>
