@@ -393,7 +393,7 @@ function displayLeaderboard(leaderboard) {
     let leaderboardHTML = `
         <div id="leaderboard-display" style="background: rgba(255, 255, 255, 0.9); border-radius: 20px; padding: 30px; margin: 30px 0; backdrop-filter: blur(10px); box-shadow: 0 8px 25px rgba(100, 127, 188, 0.3);">
             <h3 style="color: #647FBC; text-align: center; margin-bottom: 25px;">
-                <i class="fas fa-trophy"></i> Top Performers Leaderboard
+                <i class="fas fa-trophy"></i> Top 3 Performers Leaderboard
             </h3>
             <p style="text-align: center; color: #666; margin-bottom: 20px;">
                 Fastest completion times with perfect scores (all 7 answers correct)
@@ -408,7 +408,10 @@ function displayLeaderboard(leaderboard) {
             </div>
         `;
     } else {
-        leaderboard.forEach((entry, index) => {
+        // Limit to top 3 performers only
+        const top3 = leaderboard.slice(0, 3);
+        
+        top3.forEach((entry, index) => {
             const rank = index + 1;
             const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
             const timeDisplay = `${Math.floor(entry.timing.totalTimeSeconds / 60)}:${(entry.timing.totalTimeSeconds % 60).toString().padStart(2, '0')}`;
@@ -427,6 +430,16 @@ function displayLeaderboard(leaderboard) {
                 </div>
             `;
         });
+        
+        // Add note if there are more than 3 entries
+        if (leaderboard.length > 3) {
+            leaderboardHTML += `
+                <div style="text-align: center; padding: 15px; margin-top: 20px; color: #666; font-style: italic;">
+                    <i class="fas fa-star"></i> Showing top 3 performers only
+                    <br><small>Total ${leaderboard.length} perfect scores achieved!</small>
+                </div>
+            `;
+        }
     }
     
     leaderboardHTML += '</div>';
