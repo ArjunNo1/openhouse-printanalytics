@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 score: validation.correct,
                 isAllCorrect: validation.correct === 7,
                 isEligibleForRanking: validation.correct === 7 // Only perfect scores are ranked
+                // Note: The server now filters to include only the first successful attempt per email
             };
             
             // Submit to MongoDB
@@ -239,6 +240,11 @@ async function submitToMongoDB(data) {
         
         if (response.ok) {
             const result = await response.json();
+            
+            // Add the server response about ranking to data for display
+            if (result.ranking) {
+                data.isFirstPerfectScore = result.ranking.isFirstPerfectScore;
+            }
             
             // Timer was already stopped and removed in form submission
             // Display results with score and timing
@@ -345,13 +351,29 @@ function displayResults(submissionData, serverResponse) {
     
     // Add ranking information
     if (isAllCorrect) {
-        resultHTML += `
-            <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 20px; border-radius: 15px; text-align: center; color: #333; font-weight: 600;">
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">🏆 PERFECT SCORE ACHIEVED! 🏆</div>
-                <div>You're eligible for the leaderboard! Check the updated rankings below.</div>
-                <div style="margin-top: 10px; font-size: 0.9rem;">Rankings are based on fastest completion time with all correct answers.</div>
-            </div>
-        `;
+        // Check if this is the user's first perfect score
+        let isFirstAttempt = true;
+        if (submissionData.isFirstPerfectScore === false) {
+            isFirstAttempt = false;
+        }
+        
+        if (isFirstAttempt) {
+            resultHTML += `
+                <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 20px; border-radius: 15px; text-align: center; color: #333; font-weight: 600;">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">🏆 PERFECT SCORE ACHIEVED! 🏆</div>
+                    <div>Your first perfect score attempt is eligible for the leaderboard! Check the updated rankings below.</div>
+                    <div style="margin-top: 10px; font-size: 0.9rem;">Rankings are based on fastest completion time with all correct answers (first attempt only).</div>
+                </div>
+            `;
+        } else {
+            resultHTML += `
+                <div style="background: linear-gradient(135deg, #6c757d, #495057); padding: 20px; border-radius: 15px; text-align: center; color: white; font-weight: 600;">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">🌟 PERFECT SCORE AGAIN! 🌟</div>
+                    <div>Great job on another perfect score! Your first successful attempt is already on the leaderboard.</div>
+                    <div style="margin-top: 10px; font-size: 0.9rem;">Only your first perfect score is eligible for the leaderboard rankings.</div>
+                </div>
+            `;
+        }
     } else {
         resultHTML += `
             <div style="background: rgba(145, 173, 200, 0.3); padding: 20px; border-radius: 15px; text-align: center; color: #333;">
@@ -396,7 +418,7 @@ function displayLeaderboard(leaderboard) {
                 <i class="fas fa-trophy"></i> Top 3 Performers Leaderboard
             </h3>
             <p style="text-align: center; color: #666; margin-bottom: 20px;">
-                Fastest completion times with perfect scores (all 7 answers correct)
+                Fastest completion times with perfect scores - first successful attempt only
             </p>
     `;
     

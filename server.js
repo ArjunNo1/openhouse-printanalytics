@@ -84,13 +84,12 @@ app.post('/submit-quiz', async (req, res) => {
 // Route to get leaderboard
 app.get('/leaderboard', async (req, res) => {
     try {
-        // Get top 10 perfect scores ordered by completion time
-        const leaderboard = await collection.find({
+        // First get all eligible entries with perfect scores
+        const allEntries = await collection.find({
             isEligibleForRanking: true,
             score: 7
         })
-        .sort({ 'timing.totalTimeSeconds': 1 }) // Fastest first
-        .limit(10)
+        .sort({ 'timing.totalTimeSeconds': 1, 'submittedAt': 1 }) // Sort by fastest time, then earliest submission
         .project({
             name: 1,
             email: 1,
@@ -99,6 +98,17 @@ app.get('/leaderboard', async (req, res) => {
             submittedAt: 1
         })
         .toArray();
+        
+        // Filter to keep only the first successful attempt for each email
+        const uniqueEmails = new Set();
+        const leaderboard = allEntries.filter(entry => {
+            if (!uniqueEmails.has(entry.email)) {
+                uniqueEmails.add(entry.email);
+                return true;
+            }
+            return false;
+        })
+        .slice(0, 10); // Limit to top 10
         
         res.json(leaderboard);
     } catch (error) {
@@ -113,25 +123,40 @@ app.get('/leaderboard', async (req, res) => {
 // Function to update ranking for perfect scores
 async function updateRanking(quizData) {
     try {
-        // Count how many people have faster times with perfect scores
-        const fasterCount = await collection.countDocuments({
-            isEligibleForRanking: true,
-            score: 7,
-            'timing.totalTimeSeconds': { $lt: quizData.timing.totalTimeSeconds }
-        });
-        
-        const currentRank = fasterCount + 1;
-        
-        // Get total number of perfect scores
-        const totalPerfectScores = await collection.countDocuments({
+        // Check if this user already has a perfect score entry
+        const existingEntry = await collection.findOne({
+            email: quizData.email,
             isEligibleForRanking: true,
             score: 7
         });
         
+        // If this is not their first perfect score, they won't be added to the leaderboard
+        const isFirstPerfectScore = !existingEntry;
+        
+        // Get unique emails with perfect scores for proper ranking calculation
+        const uniqueScores = await collection.aggregate([
+            { $match: { isEligibleForRanking: true, score: 7 } },
+            { $sort: { 'timing.totalTimeSeconds': 1, submittedAt: 1 } },
+            { $group: { _id: "$email", timing: { $first: "$timing" } } }
+        ]).toArray();
+        
+        // Count how many people have faster times with perfect scores (first attempts only)
+        let currentRank = 0;
+        if (isFirstPerfectScore) {
+            const fasterEntries = uniqueScores.filter(entry => 
+                entry.timing.totalTimeSeconds < quizData.timing.totalTimeSeconds
+            );
+            currentRank = fasterEntries.length + 1;
+        } else {
+            // If not first perfect score, don't calculate rank for leaderboard
+            currentRank = -1; // -1 indicates not ranked
+        }
+        
         return {
             currentRank: currentRank,
-            totalPerfectScores: totalPerfectScores + 1, // +1 because this submission isn't counted yet
-            completionTime: quizData.timing.totalTimeSeconds
+            totalPerfectScores: uniqueScores.length + (isFirstPerfectScore ? 1 : 0),
+            completionTime: quizData.timing.totalTimeSeconds,
+            isFirstPerfectScore: isFirstPerfectScore
         };
     } catch (error) {
         console.error("Error updating ranking:", error);
